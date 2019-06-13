@@ -1,0 +1,4 @@
+Source: cyrus-sasl
+Version: 2.1.27
+Description: RFC4422 Simple Authentication and Security Layer (SASL)
+Build-Depends: lmdb
