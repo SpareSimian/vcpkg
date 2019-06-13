@@ -31,19 +31,7 @@ vcpkg_execute_required_process(
 # individually. We also don't want the install project as we do that
 # directly with cmake/vcpkg operations.
 
-# skip_clean on this one so plugin_sasldb doesn't have to build it
-# again (it's a prereq) 
-vcpkg_install_msbuild(
-    SOURCE_PATH ${SOURCE_PATH}
-    PROJECT_SUBPATH win32/sasldb.vcxproj
-    INCLUDES_SUBPATH include
-    LICENSE_SUBPATH COPYING
-    REMOVE_ROOT_INCLUDES
-    USE_VCPKG_INTEGRATION
-    SKIP_CLEAN
-)
-
-# this builds sasldb and plugin_sasldb
+# this builds common, sasldb, and plugin_sasldb
 vcpkg_install_msbuild(
     SOURCE_PATH ${SOURCE_PATH}
     PROJECT_SUBPATH win32/plugin_sasldb.vcxproj
@@ -51,9 +39,10 @@ vcpkg_install_msbuild(
     LICENSE_SUBPATH COPYING
     REMOVE_ROOT_INCLUDES
     USE_VCPKG_INTEGRATION
+    SKIP_CLEAN
 )
 
-# this builds common and all the other plugins
+# this builds common and all the other plugins except gssapiv2
 vcpkg_install_msbuild(
     SOURCE_PATH ${SOURCE_PATH}
     PROJECT_SUBPATH win32/sasl2.vcxproj
