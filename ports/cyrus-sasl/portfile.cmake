@@ -31,24 +31,8 @@ vcpkg_execute_required_process(
 # individually. We also don't want the install project as we do that
 # directly with cmake/vcpkg operations.
 
-vcpkg_install_msbuild(
-    SOURCE_PATH ${SOURCE_PATH}
-    PROJECT_SUBPATH win32/sasl2.vcxproj
-    INCLUDES_SUBPATH include
-    LICENSE_SUBPATH COPYING
-    REMOVE_ROOT_INCLUDES
-    USE_VCPKG_INTEGRATION
-)
-
-vcpkg_install_msbuild(
-    SOURCE_PATH ${SOURCE_PATH}
-    PROJECT_SUBPATH win32/common.vcxproj
-    INCLUDES_SUBPATH include
-    LICENSE_SUBPATH COPYING
-    REMOVE_ROOT_INCLUDES
-    USE_VCPKG_INTEGRATION
-)
-
+# skip_clean on this one so plugin_sasldb doesn't have to build it
+# again (it's a prereq) 
 vcpkg_install_msbuild(
     SOURCE_PATH ${SOURCE_PATH}
     PROJECT_SUBPATH win32/sasldb.vcxproj
@@ -56,56 +40,23 @@ vcpkg_install_msbuild(
     LICENSE_SUBPATH COPYING
     REMOVE_ROOT_INCLUDES
     USE_VCPKG_INTEGRATION
+    SKIP_CLEAN
 )
 
-vcpkg_install_msbuild(
-    SOURCE_PATH ${SOURCE_PATH}
-    PROJECT_SUBPATH win32/plugin_digestmd5.vcxproj
-    INCLUDES_SUBPATH include
-    LICENSE_SUBPATH COPYING
-    REMOVE_ROOT_INCLUDES
-    USE_VCPKG_INTEGRATION
-)
-
-vcpkg_install_msbuild(
-    SOURCE_PATH ${SOURCE_PATH}
-    PROJECT_SUBPATH win32/plugin_scram.vcxproj
-    INCLUDES_SUBPATH include
-    LICENSE_SUBPATH COPYING
-    REMOVE_ROOT_INCLUDES
-    USE_VCPKG_INTEGRATION
-)
-
-vcpkg_install_msbuild(
-    SOURCE_PATH ${SOURCE_PATH}
-    PROJECT_SUBPATH win32/plugin_anonymous.vcxproj
-    INCLUDES_SUBPATH include
-    LICENSE_SUBPATH COPYING
-    REMOVE_ROOT_INCLUDES
-    USE_VCPKG_INTEGRATION
-)
-
-vcpkg_install_msbuild(
-    SOURCE_PATH ${SOURCE_PATH}
-    PROJECT_SUBPATH win32/plugin_plain.vcxproj
-    INCLUDES_SUBPATH include
-    LICENSE_SUBPATH COPYING
-    REMOVE_ROOT_INCLUDES
-    USE_VCPKG_INTEGRATION
-)
-
-vcpkg_install_msbuild(
-    SOURCE_PATH ${SOURCE_PATH}
-    PROJECT_SUBPATH win32/plugin_ntlm.vcxproj
-    INCLUDES_SUBPATH include
-    LICENSE_SUBPATH COPYING
-    REMOVE_ROOT_INCLUDES
-    USE_VCPKG_INTEGRATION
-)
-
+# this builds sasldb and plugin_sasldb
 vcpkg_install_msbuild(
     SOURCE_PATH ${SOURCE_PATH}
     PROJECT_SUBPATH win32/plugin_sasldb.vcxproj
+    INCLUDES_SUBPATH include
+    LICENSE_SUBPATH COPYING
+    REMOVE_ROOT_INCLUDES
+    USE_VCPKG_INTEGRATION
+)
+
+# this builds common and all the other plugins
+vcpkg_install_msbuild(
+    SOURCE_PATH ${SOURCE_PATH}
+    PROJECT_SUBPATH win32/sasl2.vcxproj
     INCLUDES_SUBPATH include
     LICENSE_SUBPATH COPYING
     REMOVE_ROOT_INCLUDES
