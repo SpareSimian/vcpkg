@@ -1,0 +1,22 @@
+diff --git a/win32/sasldb.vcxproj b/win32/sasldb.vcxproj
+index 265e03f..066c1e5 100644
+--- a/win32/sasldb.vcxproj
++++ b/win32/sasldb.vcxproj
+@@ -125,7 +125,7 @@
+       <SDLCheck>true</SDLCheck>
+     </ClCompile>
+     <Lib>
+-      <AdditionalDependencies>lmdb.lib</AdditionalDependencies>
++      <AdditionalDependencies>lmdbd.lib</AdditionalDependencies>
+     </Lib>
+   </ItemDefinitionGroup>
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+@@ -135,7 +135,7 @@
+       <SDLCheck>true</SDLCheck>
+     </ClCompile>
+     <Lib>
+-      <AdditionalDependencies>lmdb.lib</AdditionalDependencies>
++      <AdditionalDependencies>lmdbd.lib</AdditionalDependencies>
+     </Lib>
+   </ItemDefinitionGroup>
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

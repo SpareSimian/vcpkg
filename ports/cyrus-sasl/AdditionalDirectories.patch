@@ -1,5 +1,5 @@
 diff --git a/win32/cyrus-sasl.props b/win32/cyrus-sasl.props
-index 340034a6..295d580e 100644
+index 340034a..295d580 100644
 --- a/win32/cyrus-sasl.props
 +++ b/win32/cyrus-sasl.props
 @@ -17,14 +17,14 @@
@@ -21,7 +21,7 @@ index 340034a6..295d580e 100644
    </ItemDefinitionGroup>
    <ItemGroup>
 diff --git a/win32/plugins.props b/win32/plugins.props
-index 395a967c..bcc32bba 100644
+index 395a967..bcc32bb 100644
 --- a/win32/plugins.props
 +++ b/win32/plugins.props
 @@ -14,11 +14,11 @@
@@ -40,7 +40,7 @@ index 395a967c..bcc32bba 100644
 \ No newline at end of file
 +</Project>
 diff --git a/win32/sasldb.props b/win32/sasldb.props
-index 84591c99..a61584eb 100644
+index 84591c9..253b956 100644
 --- a/win32/sasldb.props
 +++ b/win32/sasldb.props
 @@ -1,4 +1,4 @@
@@ -49,7 +49,7 @@ index 84591c99..a61584eb 100644
  <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
    <ItemDefinitionGroup>
      <ClCompile>
-@@ -6,7 +6,10 @@
+@@ -6,7 +6,13 @@
      </ClCompile>
      <Link>
        <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -59,8 +59,11 @@ index 84591c99..a61584eb 100644
 -</Project>
 \ No newline at end of file
 +    <Link>
-+	<AdditionalDependencies Condition="'$(Configuration)'=='Debug'">%(AdditionalDependencies);lmdbd.lib</AdditionalDependencies>
-+	<AdditionalDependencies Condition="'$(Configuration)'=='Release'">%(AdditionalDependencies);lmdb.lib</AdditionalDependencies>
++      <AdditionalDependencies Condition="'$(Configuration)'=='Debug'">%(AdditionalDependencies);lmdbd.lib</AdditionalDependencies>
++      <AdditionalDependencies Condition="'$(Configuration)'=='Release'">%(AdditionalDependencies);lmdb.lib</AdditionalDependencies>
 +    </Link>
++    <Lib>
++      <AdditionalLibraryDirectories>$(SaslDependencyLibDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
++    </Lib>
 +	</ItemDefinitionGroup>
 +</Project>
