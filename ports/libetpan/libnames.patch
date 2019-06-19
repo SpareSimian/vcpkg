@@ -1,0 +1,40 @@
+diff --git a/build-windows/libetpan/libetpan.vcxproj b/build-windows/libetpan/libetpan.vcxproj
+index fe78d17..3b94541 100644
+--- a/build-windows/libetpan/libetpan.vcxproj
++++ b/build-windows/libetpan/libetpan.vcxproj
+@@ -98,7 +98,7 @@
+     </ClCompile>
+     <Link>
+       <AdditionalOptions>/DLL %(AdditionalOptions)</AdditionalOptions>
+-      <AdditionalDependencies>libsasl2.lib;zlib.lib;Ws2_32.lib;ssleay32MDd.lib;libeay32MDd.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>sasl2.lib;zlibd.lib;Ws2_32.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <SuppressStartupBanner>true</SuppressStartupBanner>
+       <AdditionalLibraryDirectories>../../third-party/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+       <IgnoreSpecificDefaultLibraries>C;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+@@ -130,7 +130,7 @@
+     </ClCompile>
+     <Link>
+       <AdditionalOptions>/DLL %(AdditionalOptions)</AdditionalOptions>
+-      <AdditionalDependencies>libsasl2.lib;zlib.lib;Ws2_32.lib;ssleay32MDd.lib;libeay32MDd.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>sasl2.lib;zlibd.lib;Ws2_32.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <SuppressStartupBanner>true</SuppressStartupBanner>
+       <AdditionalLibraryDirectories>../../third-party/lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+       <IgnoreSpecificDefaultLibraries>C;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+@@ -160,7 +160,7 @@
+     </ClCompile>
+     <Link>
+       <AdditionalOptions>/DLL %(AdditionalOptions)</AdditionalOptions>
+-      <AdditionalDependencies>libsasl2.lib;zlib.lib;Ws2_32.lib;ssleay32MD.lib;libeay32MD.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>sasl2.lib;zlib.lib;Ws2_32.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <AdditionalLibraryDirectories>../../third-party/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+       <IgnoreSpecificDefaultLibraries>C;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+@@ -189,7 +189,7 @@
+     </ClCompile>
+     <Link>
+       <AdditionalOptions>/DLL %(AdditionalOptions)</AdditionalOptions>
+-      <AdditionalDependencies>libsasl2.lib;zlib.lib;Ws2_32.lib;ssleay32MD.lib;libeay32MD.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>sasl2.lib;zlib.lib;Ws2_32.lib;ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <AdditionalLibraryDirectories>../../third-party/lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+       <IgnoreSpecificDefaultLibraries>C;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+       <GenerateDebugInformation>true</GenerateDebugInformation>

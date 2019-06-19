@@ -1,0 +1,4 @@
+Source: libetpan
+Version: 1.9.3
+Description: A portable, efficient framework for different kinds of mail access: IMAP, SMTP, POP and NNTP
+Build-Depends: cyrus-sasl, zlib, openssl
