@@ -51,3 +51,34 @@ vcpkg_install_msbuild(
     REMOVE_ROOT_INCLUDES
     USE_VCPKG_INTEGRATION
 )
+
+# move plugins to correct package directory (based on Linux packages)
+
+file(MAKE_DIRECTORY ${CURRENT_PACKAGES_DIR}/tools/sasl2)
+file(RENAME ${CURRENT_PACKAGES_DIR}/bin/plugin_sasldb.dll ${CURRENT_PACKAGES_DIR}/tools/sasl2/plugin_sasldb.dll)
+file(RENAME ${CURRENT_PACKAGES_DIR}/bin/plugin_sasldb.pdb ${CURRENT_PACKAGES_DIR}/tools/sasl2/plugin_sasldb.pdb)
+# remove unwanted internal libraries from package
+file(REMOVE
+   ${CURRENT_PACKAGES_DIR}/lib/libcommon.lib
+   ${CURRENT_PACKAGES_DIR}/lib/sasldb.lib
+   ${CURRENT_PACKAGES_DIR}/lib/plugin_anonymous.lib
+   ${CURRENT_PACKAGES_DIR}/lib/plugin_digestmd5.lib
+   ${CURRENT_PACKAGES_DIR}/lib/plugin_ntlm.lib
+   ${CURRENT_PACKAGES_DIR}/lib/plugin_plain.lib
+   ${CURRENT_PACKAGES_DIR}/lib/plugin_sasldb.lib
+   ${CURRENT_PACKAGES_DIR}/lib/plugin_scram.lib)
+
+# now the same for debug build
+file(MAKE_DIRECTORY ${CURRENT_PACKAGES_DIR}/debug/tools/sasl2)
+file(RENAME ${CURRENT_PACKAGES_DIR}/debug/bin/plugin_sasldb.dll ${CURRENT_PACKAGES_DIR}/debug/tools/sasl2/plugin_sasldb.dll)
+file(RENAME ${CURRENT_PACKAGES_DIR}/debug/bin/plugin_sasldb.pdb ${CURRENT_PACKAGES_DIR}/debug/tools/sasl2/plugin_sasldb.pdb)
+# remove unwanted internal libraries from package
+file(REMOVE
+   ${CURRENT_PACKAGES_DIR}/debug/lib/libcommond.lib
+   ${CURRENT_PACKAGES_DIR}/debug/lib/sasldb.lib
+   ${CURRENT_PACKAGES_DIR}/debug/lib/plugin_anonymous.lib
+   ${CURRENT_PACKAGES_DIR}/debug/lib/plugin_digestmd5.lib
+   ${CURRENT_PACKAGES_DIR}/debug/lib/plugin_ntlm.lib
+   ${CURRENT_PACKAGES_DIR}/debug/lib/plugin_plain.lib
+   ${CURRENT_PACKAGES_DIR}/debug/lib/plugin_sasldb.lib
+   ${CURRENT_PACKAGES_DIR}/debug/lib/plugin_scram.lib)
