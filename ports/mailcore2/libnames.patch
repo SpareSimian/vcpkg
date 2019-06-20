@@ -1,0 +1,70 @@
+diff --git a/build-windows/build_headers.list b/build-windows/build_headers.list
+index 4662e54c..50e21e5d 100644
+--- a/build-windows/build_headers.list
++++ b/build-windows/build_headers.list
+@@ -86,7 +86,9 @@ src\async\imap\MCIMAPAsyncSession.h
+ src\async\imap\MCIMAPOperation.h
+ src\async\imap\MCIMAPFetchFoldersOperation.h
+ src\async\imap\MCIMAPAppendMessageOperation.h
++src\async\imap\MCIMAPCheckAccountOperation.h
+ src\async\imap\MCIMAPCopyMessagesOperation.h
++src\async\imap\MCIMAPCustomCommandOperation.h
+ src\async\imap\MCIMAPMoveMessagesOperation.h
+ src\async\imap\MCIMAPFetchMessagesOperation.h
+ src\async\imap\MCIMAPFetchContentOperation.h
+diff --git a/build-windows/mailcore2/mailcore2/mailcore2.vcxproj b/build-windows/mailcore2/mailcore2/mailcore2.vcxproj
+index 040d7fe4..5a028e64 100644
+--- a/build-windows/mailcore2/mailcore2/mailcore2.vcxproj
++++ b/build-windows/mailcore2/mailcore2/mailcore2.vcxproj
+@@ -29,6 +29,7 @@
+     <ClInclude Include="..\..\..\src\async\imap\MCIMAPCopyMessagesOperation.h" />
+     <ClInclude Include="..\..\..\src\async\imap\MCIMAPMoveMessagesOperation.h" />
+     <ClInclude Include="..\..\..\src\async\imap\MCIMAPCreateFolderOperation.h" />
++    <ClInclude Include="..\..\..\src\async\imap\MCIMAPCustomCommandOperation.h" />
+     <ClInclude Include="..\..\..\src\async\imap\MCIMAPDeleteFolderOperation.h" />
+     <ClInclude Include="..\..\..\src\async\imap\MCIMAPDisconnectOperation.h" />
+     <ClInclude Include="..\..\..\src\async\imap\MCIMAPExpungeOperation.h" />
+@@ -193,6 +194,7 @@
+     <ClCompile Include="..\..\..\src\async\imap\MCIMAPCheckAccountOperation.cpp" />
+     <ClCompile Include="..\..\..\src\async\imap\MCIMAPConnectOperation.cpp" />
+     <ClCompile Include="..\..\..\src\async\imap\MCIMAPCopyMessagesOperation.cpp" />
++    <ClCompile Include="..\..\..\src\async\imap\MCIMAPCustomCommandOperation.cpp" />
+     <ClCompile Include="..\..\..\src\async\imap\MCIMAPMoveMessagesOperation.cpp" />
+     <ClCompile Include="..\..\..\src\async\imap\MCIMAPCreateFolderOperation.cpp" />
+     <ClCompile Include="..\..\..\src\async\imap\MCIMAPDeleteFolderOperation.cpp" />
+@@ -395,7 +397,7 @@
+     <Link>
+       <SubSystem>Windows</SubSystem>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+-      <AdditionalDependencies>Crypt32.lib;libtidy.lib;libxml2.lib;ssleay32MD.lib;libeay32MD.lib;zlib.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2.lib;icudt.lib;icuin.lib;icuio.lib;icule.lib;iculx.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>Crypt32.lib;tidy.lib;libxml2.lib;ssleay32.lib;libeay32.lib;zlib.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2.lib;icudt.lib;icuin.lib;icuio.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <AdditionalLibraryDirectories>..\..\..\Externals\lib;..\..\..\Externals\lib\x86</AdditionalLibraryDirectories>
+     </Link>
+   </ItemDefinitionGroup>
+@@ -411,7 +413,7 @@
+     <Link>
+       <SubSystem>Windows</SubSystem>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+-      <AdditionalDependencies>Crypt32.lib;libtidy.lib;libxml2.lib;ssleay32MD.lib;libeay32MD.lib;zlib.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2.lib;icudt.lib;icuin.lib;icuio.lib;icule.lib;iculx.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>Crypt32.lib;tidy.lib;libxml2.lib;ssleay32.lib;libeay32.lib;zlib.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2.lib;icudt.lib;icuin.lib;icuio.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <AdditionalLibraryDirectories>..\..\..\Externals\lib64;..\..\..\Externals\lib\x64</AdditionalLibraryDirectories>
+     </Link>
+   </ItemDefinitionGroup>
+@@ -431,7 +433,7 @@
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+       <OptimizeReferences>true</OptimizeReferences>
+-      <AdditionalDependencies>Crypt32.lib;libtidy.lib;libxml2.lib;ssleay32MD.lib;libeay32MD.lib;zlib.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2.lib;icudt.lib;icuin.lib;icuio.lib;icule.lib;iculx.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>Crypt32.lib;tidy.lib;libxml2.lib;ssleay32.lib;libeay32.lib;zlib.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2.lib;icudt.lib;icuin.lib;icuio.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <AdditionalLibraryDirectories>..\..\..\Externals\lib;..\..\..\Externals\lib\x86</AdditionalLibraryDirectories>
+     </Link>
+   </ItemDefinitionGroup>
+@@ -451,7 +453,7 @@
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+       <OptimizeReferences>true</OptimizeReferences>
+-      <AdditionalDependencies>Crypt32.lib;libtidy.lib;libxml2.lib;ssleay32MD.lib;libeay32MD.lib;zlib.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2.lib;icudt.lib;icuin.lib;icuio.lib;icule.lib;iculx.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>Crypt32.lib;tidy.lib;libxml2.lib;ssleay32.lib;libeay32.lib;zlib.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2.lib;icudt.lib;icuin.lib;icuio.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <AdditionalLibraryDirectories>..\..\..\Externals\lib64;..\..\..\Externals\lib\x64</AdditionalLibraryDirectories>
+     </Link>
+   </ItemDefinitionGroup>

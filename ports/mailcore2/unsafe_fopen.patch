@@ -1,0 +1,17 @@
+diff --git a/src/core/basetypes/MCDataStreamDecoder.cpp b/src/core/basetypes/MCDataStreamDecoder.cpp
+index 3b24c56e..9442e5bb 100644
+--- a/src/core/basetypes/MCDataStreamDecoder.cpp
++++ b/src/core/basetypes/MCDataStreamDecoder.cpp
+@@ -82,6 +82,12 @@ ErrorCode DataStreamDecoder::flushData()
+     return errorCode;
+ }
+ 
++// msvc considers fopen to be "unsafe" and newer compiler versions make
++// this an error
++#ifdef _MSC_VER
++#pragma warning(disable : 4996)
++#endif
++
+ ErrorCode DataStreamDecoder::appendDecodedData(Data * decodedData)
+ {
+     if (mFilename == NULL) {

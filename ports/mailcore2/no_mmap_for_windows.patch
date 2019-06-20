@@ -1,0 +1,75 @@
+diff --git a/src/core/basetypes/MCData.cpp b/src/core/basetypes/MCData.cpp
+index 1fee18aa..0d2ef886 100644
+--- a/src/core/basetypes/MCData.cpp
++++ b/src/core/basetypes/MCData.cpp
+@@ -7,7 +7,9 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/stat.h>
++#ifndef _MSC_VER // msvc lacks mmap
+ #include <sys/mman.h>
++#endif
+ #include <pthread.h>
+ #if USE_UCHARDET
+ #include <uchardet/uchardet.h>
+@@ -529,6 +531,51 @@ void Data::takeBytesOwnership(char * bytes, unsigned int length, BytesDeallocato
+     mBytesDeallocator = bytesDeallocator;
+ }
+ 
++#ifdef _MSC_VER // msvc lacks mmap, but could use native memory mapped file API
++
++static void mallocDeallocator(char * bytes, unsigned int length) {
++    free(bytes);
++}
++
++Data * Data::dataWithContentsOfFile(String * filename)
++{
++    int r;
++    size_t read_items;
++    struct stat stat_buf;
++    FILE * f;
++    char * buf;
++    Data * data;
++
++    f = fopen(filename->fileSystemRepresentation(), "rb");
++    if (f == NULL) {
++        return NULL;
++    }
++
++    r = fstat(fileno(f), &stat_buf);
++    if (r < 0) {
++        fclose(f);
++        return NULL;
++    }
++
++    buf = (char *) malloc((size_t) stat_buf.st_size);
++
++    read_items = fread(buf, 1, (size_t)  stat_buf.st_size, f);
++    if ((off_t) read_items != stat_buf.st_size) {
++        free(buf);
++        fclose(f);
++        return NULL;
++    }
++
++    data = Data::data();
++    data->takeBytesOwnership(buf, (unsigned int) stat_buf.st_size, mallocDeallocator);
++
++    fclose(f);
++
++    return data;
++}
++
++#else
++
+ static void mmapDeallocator(char * bytes, unsigned int length) {
+     if (bytes) {
+         munmap(bytes, length);
+@@ -566,6 +613,8 @@ Data * Data::dataWithContentsOfFile(String * filename)
+     return data;
+ }
+ 
++#endif
++
+ Data * Data::decodedDataUsingEncoding(Encoding encoding)
+ {
+     Data * unused = NULL;

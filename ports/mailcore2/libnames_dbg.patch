@@ -1,0 +1,22 @@
+diff --git a/build-windows/mailcore2/mailcore2/mailcore2.vcxproj b/build-windows/mailcore2/mailcore2/mailcore2.vcxproj
+index 5a028e64..0c66a69a 100644
+--- a/build-windows/mailcore2/mailcore2/mailcore2.vcxproj
++++ b/build-windows/mailcore2/mailcore2/mailcore2.vcxproj
+@@ -397,7 +397,7 @@
+     <Link>
+       <SubSystem>Windows</SubSystem>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+-      <AdditionalDependencies>Crypt32.lib;tidy.lib;libxml2.lib;ssleay32.lib;libeay32.lib;zlib.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2.lib;icudt.lib;icuin.lib;icuio.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>Crypt32.lib;tidyd.lib;libxml2.lib;ssleay32.lib;libeay32.lib;zlibd.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2d.lib;icudtd.lib;icuind.lib;icuiod.lib;icuucd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <AdditionalLibraryDirectories>..\..\..\Externals\lib;..\..\..\Externals\lib\x86</AdditionalLibraryDirectories>
+     </Link>
+   </ItemDefinitionGroup>
+@@ -413,7 +413,7 @@
+     <Link>
+       <SubSystem>Windows</SubSystem>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+-      <AdditionalDependencies>Crypt32.lib;tidy.lib;libxml2.lib;ssleay32.lib;libeay32.lib;zlib.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2.lib;icudt.lib;icuin.lib;icuio.lib;icuuc.lib;%(AdditionalDependencies)</AdditionalDependencies>
++      <AdditionalDependencies>Crypt32.lib;tidyd.lib;libxml2.lib;ssleay32.lib;libeay32.lib;zlibd.lib;User32.lib;Ws2_32.lib;libctemplate.lib;kernel32.lib;libetpan.lib;pthreadVC2d.lib;icudtd.lib;icuind.lib;icuiod.lib;icuucd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <AdditionalLibraryDirectories>..\..\..\Externals\lib64;..\..\..\Externals\lib\x64</AdditionalLibraryDirectories>
+     </Link>
+   </ItemDefinitionGroup>

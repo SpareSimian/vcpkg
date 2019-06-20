@@ -1,0 +1,12 @@
+diff --git a/src/core/basetypes/MCDataDecoderUtils.cpp b/src/core/basetypes/MCDataDecoderUtils.cpp
+index 4ea739ce..386366c7 100644
+--- a/src/core/basetypes/MCDataDecoderUtils.cpp
++++ b/src/core/basetypes/MCDataDecoderUtils.cpp
+@@ -3,7 +3,6 @@
+ #include <libetpan/libetpan.h>
+ 
+ #include <string.h>
+-#include <strings.h>
+ 
+ namespace mailcore {
+ 

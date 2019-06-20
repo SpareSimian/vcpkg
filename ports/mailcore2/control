@@ -1,0 +1,4 @@
+Source: mailcore2
+Version: 0.6.3
+Description: A portable, efficient framework for different kinds of mail access: IMAP, SMTP, POP and NNTP
+Build-Depends: cyrus-sasl, zlib, openssl

@@ -1,0 +1,24 @@
+diff --git a/tests/test-all.cpp b/tests/test-all.cpp
+index c970e2c8..83814cb5 100644
+--- a/tests/test-all.cpp
++++ b/tests/test-all.cpp
+@@ -11,16 +11,17 @@
+ #include <MailCore/MailCore.h>
+ #if __APPLE__
+ #include <CoreFoundation/CoreFoundation.h>
++#include <unistd.h>
+ #endif
+ #if __linux__ && !defined(ANDROID) && !defined(__ANDROID__)
+ #include <glib.h>
++#include <unistd.h>
+ #endif
+ #ifdef _MSC_VER
+ #include <Windows.h>
++#include <io.h>
+ #endif
+ 
+-#include <unistd.h>
+-
+ static mailcore::String * password = NULL;
+ static mailcore::String * displayName = NULL;
+ static mailcore::String * email = NULL;

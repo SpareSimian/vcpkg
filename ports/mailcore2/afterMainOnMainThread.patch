@@ -1,0 +1,26 @@
+diff --git a/src/async/imap/MCIMAPOperation.cpp b/src/async/imap/MCIMAPOperation.cpp
+index e0dae173..465a2198 100644
+--- a/src/async/imap/MCIMAPOperation.cpp
++++ b/src/async/imap/MCIMAPOperation.cpp
+@@ -182,7 +182,7 @@ void IMAPOperation::afterMain()
+     performMethodOnMainThread((Object::Method) &IMAPOperation::afterMainOnMainThread, NULL);
+ }
+ 
+-void IMAPOperation::afterMainOnMainThread()
++void IMAPOperation::afterMainOnMainThread(void*)
+ {
+     if (mSession->session()->isAutomaticConfigurationDone()) {
+         mSession->owner()->automaticConfigurationDone(mSession->session());
+diff --git a/src/async/imap/MCIMAPOperation.h b/src/async/imap/MCIMAPOperation.h
+index a1dbbbb2..bd0bfcf1 100644
+--- a/src/async/imap/MCIMAPOperation.h
++++ b/src/async/imap/MCIMAPOperation.h
+@@ -43,7 +43,7 @@ namespace mailcore {
+         
+         virtual void beforeMain();
+         virtual void afterMain();
+-        virtual void afterMainOnMainThread();
++        virtual void afterMainOnMainThread(void*);
+         
+         virtual void start();
+         

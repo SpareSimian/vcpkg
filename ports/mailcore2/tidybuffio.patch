@@ -1,0 +1,13 @@
+diff --git a/src/core/basetypes/MCHTMLCleaner.cpp b/src/core/basetypes/MCHTMLCleaner.cpp
+index f3ff9c21..7b1a2cfb 100644
+--- a/src/core/basetypes/MCHTMLCleaner.cpp
++++ b/src/core/basetypes/MCHTMLCleaner.cpp
+@@ -16,7 +16,7 @@ typedef unsigned long ulong;
+ #endif
+ 
+ #include <tidy.h>
+-#include <buffio.h>
++#include <tidybuffio.h>
+ 
+ #include "MCUtils.h"
+ #include "MCLog.h"
